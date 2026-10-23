@@ -6,8 +6,6 @@
 #include <variant>
 #include <vector>
 
-namespace raft {
-
 using NodeId = int;
 using Term = std::uint64_t;
 using LogIndex = std::size_t;
@@ -32,7 +30,11 @@ struct RequestVote {
     LogIndex last_log_index{};
     Term last_log_term{};
 };
-struct RequestVoteReply { Term term{}; bool granted{}; };
+
+struct RequestVoteReply {
+    Term term{};
+    bool granted{};
+};
 
 struct AppendEntries {
     Term term{};
@@ -42,6 +44,7 @@ struct AppendEntries {
     std::vector<LogEntry> entries;
     LogIndex leader_commit{};
 };
+
 struct AppendEntriesReply {
     Term term{};
     bool success{};
@@ -49,9 +52,12 @@ struct AppendEntriesReply {
     LogIndex conflict_index{1};
 };
 
-using Message = std::variant<RequestVote, RequestVoteReply,
-                             AppendEntries, AppendEntriesReply>;
-struct Envelope { NodeId from{}; NodeId to{}; Message message; };
+using Message = std::variant<RequestVote, RequestVoteReply, AppendEntries, AppendEntriesReply>;
+
+struct Envelope {
+    NodeId from{};
+    NodeId to{};
+    Message message;
+};
 
 std::string role_name(Role role);
-} // namespace raft

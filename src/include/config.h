@@ -1,8 +1,8 @@
 #pragma once
+
 #include <chrono>
 #include <cstdint>
 
-namespace raft {
 struct Config {
     int nodes{3};
     std::uint64_t seed{1};
@@ -13,5 +13,3 @@ struct Config {
     std::chrono::milliseconds election_max{450};
     std::chrono::milliseconds heartbeat{75};
 };
-} // namespace raft
-
