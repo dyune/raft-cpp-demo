@@ -1,0 +1,12 @@
+/java/target/
+/.idea/.gitignore
+/.idea/compiler.xml
+/.idea/discord.xml
+/.idea/editor.xml
+/.idea/encodings.xml
+/.idea/jarRepositories.xml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/raft-demo-project.iml
+/.idea/raft-demo-project2.iml
+/.idea/vcs.xml
