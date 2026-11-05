@@ -1,4 +1,4 @@
-package com.proj.raftcli.raft.entities.node;
+package com.proj.raftcli.raft.node;
 
 public enum NodeRole {
     FOLLOWER,

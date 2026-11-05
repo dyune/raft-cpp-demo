@@ -1,4 +1,4 @@
-package com.proj.raftcli.raft.entities.log;
+package com.proj.raftcli.raft.log;
 
 public record LogEntry(
         int term,

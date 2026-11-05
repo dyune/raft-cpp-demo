@@ -1,4 +1,8 @@
 package com.proj.raftcli.raft.entities.config;
 
-public class RunConfig {
-}
+public record RunConfig(
+        long heartBeatTimeout,
+        long electionTimeout
+) {}
+
+

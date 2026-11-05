@@ -1,5 +1,7 @@
 package com.proj.raftcli.raft.entities.log;
 
+import com.proj.raftcli.raft.log.LogEntry;
+import com.proj.raftcli.raft.log.Mutation;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-package com.proj.raftcli.raft.entities.log;
+package com.proj.raftcli.raft.log;
 
 import java.util.ArrayList;
 import java.util.List;

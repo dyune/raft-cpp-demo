@@ -1,5 +1,8 @@
 package com.proj.raftcli.raft.entities.log;
 
+import com.proj.raftcli.raft.log.LogEntry;
+import com.proj.raftcli.raft.log.Mutation;
+import com.proj.raftcli.raft.log.RaftLog;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
