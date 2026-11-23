@@ -14,6 +14,44 @@ public class RaftLog {
         this.entries = new ArrayList<>();
     }
 
+    public boolean hasMatchingPrevEntry(int prevIdx, int prevTerm) {
+        // TODO: Implement AE failure from leader side
+        if (prevIdx == 0) {
+            return prevTerm == 0;
+        }
+
+        if (prevIdx > entries.size()) {
+            return false;
+        }
+
+        return entries.get(prevIdx - 1).term() == prevTerm;
+    }
+
+    public int firstConflictingOrEmptyEntry(List<LogEntry> ae, int prevLogIdx) {
+        int startIdx = prevLogIdx + 1;
+
+        for (int i = 0; i < ae.size(); i++) {
+            int raftIdx = startIdx + i;
+            int arrIdx = raftIdx - 1;
+
+            // Our log is shorter than the leader's, automatically append
+            if (arrIdx >= entries.size()) {
+                return raftIdx;
+            }
+
+            LogEntry fromAe = ae.get(arrIdx);
+            LogEntry fromLog = entries.get(arrIdx);
+
+            // Conflict
+            if (fromAe.term() != fromLog.term() || fromAe.mutation() != fromLog.mutation()) {
+                return raftIdx;
+            }
+        }
+
+        // No conflict
+        return -1;
+    }
+
     public Optional<LogEntry> entryAt(int idx) {
         // Not zero-indexed list, idx 0 represents empty, idx 1 represents first element.
         if (idx == 0) return Optional.empty();

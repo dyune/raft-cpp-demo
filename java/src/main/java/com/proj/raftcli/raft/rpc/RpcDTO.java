@@ -27,7 +27,8 @@ sealed public interface RpcDTO {
     record RequestVote(
             int term,
             int candidateId,
-            int lastLogTerm
+            int lastLogTerm,
+            int lastLogIndex
     ) implements RpcDTO {}
 
     record VoteResult(
